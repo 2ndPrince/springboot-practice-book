@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,5 +46,19 @@ public class PostsRepositoryTest {
         assertEquals(content, firstPost.getContent());
         assertEquals("Youngseok", firstPost.getAuthor());
         assertEquals(1, firstPost.getId().intValue());
+    }
+
+    @Test
+    public void baseTimeEntity(){
+        //given
+        LocalDateTime now = LocalDateTime.now();
+        repo.save(Posts.builder().title("title").content("content here").author("Young").build());
+
+        Posts firstPosts = repo.findAll().get(0);
+
+        assertTrue(firstPosts.getCreatedDate().isAfter(now));
+        assertTrue(firstPosts.getModifiedDate().isAfter(now));
+
+
     }
 }
