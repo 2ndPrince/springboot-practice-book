@@ -1,6 +1,8 @@
-package com.youngseok.book.springboot.web.dto;
+package com.youngseok.book.springboot.web;
 
 import com.youngseok.book.springboot.service.PostsService;
+import com.youngseok.book.springboot.web.dto.PostsResponseDto;
+import com.youngseok.book.springboot.web.dto.PostsSaveRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
